@@ -11,11 +11,6 @@ public class NumberList {
         size = 0;
     }
 
-    /*null test
-    *public void test(){
-    *    System.out.println(list[1]);
-    }*/
-
     public int size(){
         int total = 0;
         for (int i = list.length; i < list.length; i ++){
