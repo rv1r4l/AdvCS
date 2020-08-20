@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.ArrayList;
 
+//Rishit Viral 4B
+
 public class NumberList {
 
     private Integer[] list;
@@ -67,14 +69,16 @@ public class NumberList {
         return this.list[index];
     }
 
-    public void set(int index, int element){
+    public Integer set(int index, int element){
         if (index >= this.size|| index < 0){
             throw new IndexOutOfBoundsException();
         }
+        int x = this.list[index];
         this.list[index] = element;
+        return x;
     }
 
-    public int remove(int index){
+    public Integer remove(int index){
         if (index >= this.size|| index < 0){
             throw new IndexOutOfBoundsException();
         }
