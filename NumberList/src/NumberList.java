@@ -11,61 +11,79 @@ public class NumberList {
         size = 0;
     }
 
-    /*null test
-    *public void test(){
-    *    System.out.println(list[1]);
-    }*/
-
     public int size(){
-        int total = 0;
-        for (int i = list.length; i < list.length; i ++){
-            if (!(list[i] == null)){
-                total ++;
-            }
-        }
-        return total;
+        return this.size;
     }
 
     public boolean isEmpty(){
-        if (size() > 0){
-            return false;
+        if (this.size == 0){
+            return true;
         }
-        return true;
+        return false;
     }
 
-    //edit
     public String toString(){
         String inside = "";
-        for(int i = list.length; i < list.length; i ++){
-            if (!(list[i]== null)){
-                inside += list[i] + ", ";
+        for(int i = 0; i < this.size; i ++){
+            if (i==this.size-1){
+                inside = inside + this.list[i];
+                break;
             }
+            inside = inside + this.list[i] + ", ";
         }
         return "[" + inside + "]";
     }
 
     private void doubleCapacity(){
         Integer[] list2 = new Integer[list.length*2];
-        for(int i = list.length; i < list.length; i ++){
-            list2[i] = list[i];
+        for(int i = 0; i < list.length; i ++){
+            list2[i] = this.list[i];
         }
         this.list = list2;
     }
 
-    public void add(int x, int index){
-        if (index > list.length){
+    public void add(int index, int element) {
+        if (index > this.size|| index < 0)
+            throw new IndexOutOfBoundsException();
+        if (this.size == this.list.length){
+            this.doubleCapacity();
+        }
+        for (int i = this.size; i > index; i --){
+            this.list[i] = this.list[i-1];
+        }
+        this.list[index] = element;
+        this.size++;
+    }
+
+    public boolean add(int number){
+        add(this.size, number);
+        return true;
+    }
+
+    public int get(int index){
+        if (index >= this.size|| index < 0){
             throw new IndexOutOfBoundsException();
         }
-        for (int i = index; i < list.length-1; i ++){
-            list[i+1] = list[i];
+        return this.list[index];
+    }
+
+    public void set(int index, int element){
+        if (index >= this.size|| index < 0){
+            throw new IndexOutOfBoundsException();
         }
-        list[index] = x;
+        this.list[index] = element;
     }
 
-    public void add(int x){
-        doubleCapacity();
-        add(x, list.length);
+    public int remove(int index){
+        if (index >= this.size|| index < 0){
+            throw new IndexOutOfBoundsException();
+        }
+        int x = this.list[index];
+        this.list[index] = null;
+        for (int i = index; i < this.size-1; i++){
+            this.list[i] = list[i+1];
+        }
+        this.size--;
+        return x;
     }
-
-
 }
