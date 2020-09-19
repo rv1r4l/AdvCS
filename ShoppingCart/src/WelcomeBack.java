@@ -131,21 +131,21 @@ public class WelcomeBack {
 
     public void zeck(String fileName){
         try {
-            File myObj = new File("~/Projects/ShoppingCart/src/zeck.txt");
-            Scanner myReader = new Scanner(myObj);
-            int i = 0;
-            int firstLine = Integer.parseInt((myReader.nextLine()));
-            //int
-            while(i < firstLine)
-            {
-                if(i == 0)
-                {
-                    continue;
-                }
-                else
-                {
+            Scanner myReader = new Scanner(new File(fileName));
+            ArrayList<Integer> tempArray = new ArrayList<>();
+            int lineCounter = 1;
+            int totalLines= Integer.parseInt((myReader.nextLine())); //returns value at the line
+            int lineVal = Integer.parseInt((myReader.nextLine()));
+            ArrayList<Integer> fibs = fibGenerator(lineVal);
+            for (int i = 0; i < lineVal; i ++){
 
-                }
+            }
+            //System.out.println(lineVal);
+            for (int i = 1; i < totalLines; i ++){
+                tempArray.clear();
+                lineVal = Integer.parseInt((myReader.nextLine()));
+                ArrayList<Integer> fibsx = fibGenerator(lineVal);
+                //System.out.println(lineVal);
             }
         }
         catch (FileNotFoundException e)
@@ -165,6 +165,8 @@ public class WelcomeBack {
         }
         return finArray;
     }
+
+
 
 }
 
